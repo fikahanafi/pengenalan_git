@@ -1,0 +1,39 @@
+[System]
+Name='mamdani_cekharga_baju'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=4
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='merek'
+Range=[0 100]
+NumMFs=2
+MF1='t-favorit':'trapmf',[0 0 20 80]
+MF2='favorit':'trapmf',[20 80 100 100]
+
+[Input2]
+Name='kondisi'
+Range=[0 100]
+NumMFs=2
+MF1='sedang':'trapmf',[0 0 70 90]
+MF2='baik':'trapmf',[70 90 100 100]
+
+[Output1]
+Name='harga'
+Range=[0 200000]
+NumMFs=2
+MF1='murah':'trapmf',[0 0 75000 150000]
+MF2='mahal':'trapmf',[75000 150000 200000 200000]
+
+[Rules]
+1 1, 1 (1) : 1
+1 2, 1 (1) : 1
+2 1, 2 (1) : 1
+2 2, 2 (1) : 1
