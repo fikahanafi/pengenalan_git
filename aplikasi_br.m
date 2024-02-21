@@ -78,7 +78,9 @@ function edit1_Callback(hObject, eventdata, handles)
 % hObject    handle to edit1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+merek = str2num(get(hObject,'String'));
+handles.merek = merek;
+guidata(hObject, handles);
 % Hints: get(hObject,'String') returns contents of edit1 as text
 %        str2double(get(hObject,'String')) returns contents of edit1 as a double
 
@@ -101,7 +103,9 @@ function edit2_Callback(hObject, eventdata, handles)
 % hObject    handle to edit2 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+kondisi = str2num(get(hObject,'String'));
+handles.kondisi = kondisi;
+guidata(hObject, handles);
 % Hints: get(hObject,'String') returns contents of edit2 as text
 %        str2double(get(hObject,'String')) returns contents of edit2 as a double
 
@@ -168,3 +172,16 @@ function pushbutton7_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton7 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+proses = readfis('mamdani_cekharga_baju');
+hasil = evalfis([handles.merek handles.kondisi], proses);
+set(handles.edit3, 'string', hasil);
+
+if hasil <=112500 {
+        msgbox('murah');
+        }
+else {
+        msgbox('mahal');
+        }
+end
+
+  
